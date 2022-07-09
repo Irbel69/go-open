@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+#map {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+
+
+#search-engine-input {
+  position: absolute;
+  top: 5rem;
+  z-index: 100;
+}
+
+
+
+
+.input-text {}
