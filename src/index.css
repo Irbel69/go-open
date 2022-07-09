@@ -3,21 +3,71 @@ body {
 }
 
 #map {
-  position: absolute;
+  position: fixed;
   height: 100vh;
-  width: 100%;
+  width: calc(100% - 1rem);
   z-index: 1;
+  padding: 0;
+  padding-left: 1rem;
 }
 
 
-
-#search-engine-input {
+.search-panel {
   position: absolute;
-  top: 5rem;
-  z-index: 100;
+  top: 1rem;
+  left: 2rem;
+  z-index: 99;
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-panel form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#search-engine-input{
+  width: 100%
+}
+
+@media (max-width: 480px){
+  .search-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  .search-panel form{
+    width: 90%;
+  }
 }
 
 
+.input-text{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-color: rgb(248, 248, 248);
+  border-width: 1px;
+  outline:none;
+  display:inline-block;
+  height:34px;
+  vertical-align:middle;
+  border-radius: 4px 0px 0px 4px;
+  width:220px;
+  box-sizing:border-box;
+  padding:0 18px; 
+}
 
+#route-planning-button{
+  border-radius: 0 0.2rem 0.2rem 0;
+}
 
-.input-text {}
+button{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  background-color: #7092FF;
+  border-color: #7092FF;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  border-radius: 0.2rem;
+}

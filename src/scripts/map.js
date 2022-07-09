@@ -6,5 +6,3 @@ L.tileLayer(tilesProvider, {
     maxZoom: 18,
 }).addTo(map);
 
-
-
