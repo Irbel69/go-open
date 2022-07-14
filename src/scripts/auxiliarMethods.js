@@ -25,4 +25,4 @@ let r = 6371;
 
 // calculate the result
 return(c * r);
-}
+} 

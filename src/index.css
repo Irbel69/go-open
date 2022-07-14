@@ -12,6 +12,9 @@ body {
   padding-left: 1rem;
 }
 
+hr{
+  width: 80%
+}
 
 .search-panel {
   position: absolute;
@@ -23,18 +26,19 @@ body {
   justify-content: center;
 }
 
-.search-panel form{
+.search-panel form {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
-#search-engine{
+
+#search-engine {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-#search-engine-results{
+#search-engine-results {
   margin-top: 0.7rem;
   background-color: white;
   border-radius: 10px;
@@ -42,59 +46,54 @@ body {
   overflow-y: scroll;
 }
 
-.search-engine-location{
+.search-engine-location {
   font-weight: 700;
   padding: 1rem 2rem;
   border: 1px solid #CFCFCF;
 }
 
-.search-engine-location:hover{
+.search-engine-location:hover {
   background-color: rgb(231, 231, 231);
 }
 
-#search-engine-input{
-  width: 100%
+#search-engine-input {
+  width: 100%;
+  background-color: white;
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .search-panel {
     width: 100%;
     left: 0;
     right: 0;
   }
-  .search-panel #search-engine{
+
+  .search-panel #search-engine {
     width: 90%;
+  }
+
+  #search-engine-input {
+    width: 100%;
+    height: 2.5rem;
+    background-color: white;
   }
 }
 
 
-.input-text{
+.input-text {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-color: rgb(248, 248, 248);
   border-width: 1px;
-  outline:none;
-  display:inline-block;
-  height:34px;
-  vertical-align:middle;
-  border-radius: 4px 0px 0px 4px;
-  width:220px;
-  box-sizing:border-box;
-  padding:0 18px; 
-}
-
-#route-planning-button{
-  border-radius: 0 0.2rem 0.2rem 0;
-}
-
-button{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: #fff;
-  background-color: #7092FF;
-  border-color: #7092FF;
+  outline: none;
+  display: inline-block;
+  height: 34px;
+  vertical-align: middle;
+  border-radius: 4px 4px 4px 4px;
+  width: 220px;
   box-sizing: border-box;
-  font-size: 0.875rem;
-  border-radius: 0.2rem;
+  padding: 0 18px;
 }
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -117,8 +116,10 @@ button{
 }
 
 .loader {
-  border: 0.3rem solid #f3f3f3; /* Light grey */
-  border-top: 0.3rem solid #3498db; /* Blue */
+  border: 0.3rem solid #f3f3f3;
+  /* Light grey */
+  border-top: 0.3rem solid #3498db;
+  /* Blue */
   border-radius: 50%;
   width: 1.7rem;
   height: 1.7rem;
@@ -127,13 +128,138 @@ button{
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.loading-screen{
-  display:flex;
+.loading-screen {
+  display: flex;
   justify-content: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+
+
+.other-buttons-panel {
+  z-index: 99;
+  position: absolute;
+  bottom: 5%;
+  right: 3%;
+}
+
+#new-route-button {
+  display: block;
+  background-color: #1868df;
+  color: white;
+  border: none;
+  padding: 5px;
+  height: 4rem;
+  width: 4rem;
+  box-shadow: 0 2px 4px darkslategrey;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 30%;
+  font-size: 20px;
+}
+
+.planning-route-panel {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42); 
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.42);
+  padding-top: 2rem;
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 99;
+  height: 100%;
+  width: 480px;
+  overflow: hidden;
+}
+
+@media(max-width: 480px) {
+  .planning-route-panel {
+    width: 100%;
+  }
+}
+
+.route-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.vehicle-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.route-btn {
+  padding: 1rem;
+  border-radius: 10%;
+  height: 1rem;
+  width: 1rem;
+  display: flex;
+  justify-content: center;
+  transition: ease 0.5s;
+}
+
+.route-btn-selected {
+  background: #cbdcf5;
+  color: #1868df;
+  border: 1px solid "#1868df";
+}
+
+.select-location-panel{
+  margin-top: 2rem;
+}
+
+.location-input{
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: #707070;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.text-input{
+  display: flex;
+  justify-content:space-between;
+  width: 70%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  border: 2px solid #1868df;
+  padding: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+.text-input input{
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.text-input input:active{
+  border: none;
+  outline:none;
+
+}
+
+.text-input button{
+  padding-right: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  color:#1868df;
+  background-color: white;
 }

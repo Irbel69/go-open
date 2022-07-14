@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;1,100;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="index.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -23,14 +25,41 @@
     <div id="search-engine">
       <form>
         <input type="text" id="search-engine-input" class="input-text" placeholder="Insert location">
-        <button id="route-planning-button">
-          <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <path fill="#444" d="M16 8l-3-3v2h-4v-4h2l-3-3-3 3h2v4h-4v-2l-3 3 3 3v-2h4v4h-2l3 3 3-3h-2v-4h4v2z"></path>
-          </svg>
-        </button>
       </form>
       <div id="search-engine-results"></div>
     </div>
+  </div>
+  <div class="planning-route-panel">
+    <div class="route-buttons">
+      <div class="retrocede-btn route-btn" id="hide-route-panel"><i class="fa-solid fa-arrow-left"></i></div>
+      <div class="vehicle-panel">
+        <div class="route-btn" id="car"><i class="fa-solid fa-car"></i></div>
+        <div class="route-btn" id="waling"><i class="fa-solid fa-person-walking"></i></div>
+        <div class="route-btn" id="bike"><i class="fa-solid fa-person-biking"></i></div>
+        <div class="route-btn" id="train"><i class="fa-solid fa-train-subway"></i></div>
+      </div>
+    </div>
+    <hr>
+    <div class="select-location-panel">
+      <div class="location-input">
+        <i class="fa-solid fa-person"></i>
+        <div class="text-input">
+          <input type="text" placeholder="Introduce your starting poin">
+          <button><i class="fa-solid fa-location-dot"></i></button>
+        </div>
+      </div>
+      <div class="location-input">
+        <i class="fa-solid fa-map-pin"></i>
+        <div class="text-input">
+          <input type="text" placeholder="Introduce your destination">
+          <button><i class="fa-solid fa-location-dot"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="other-buttons-panel">
+    <button id="new-route-button"><i class="fa-solid fa-route"></i></button>
   </div>
   <div id="map"></div>
 </body>
@@ -42,7 +71,9 @@
 
 <script src="scripts/auxiliarMethods.js"></script>
 <script src="scripts/map.js"></script>
-<script src="scripts/search-engine.js"></script>
+<script src="scripts/searchEngine.js"></script>
 <script src="scripts/zoomControl.js"></script>
+<script src="scripts/request.js"></script>
+<script src="scripts/routePlanning.js"></script>
 
 </html>

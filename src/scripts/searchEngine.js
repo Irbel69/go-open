@@ -14,6 +14,7 @@ input.addEventListener('input', async (e) => {
   window.stop(); //in order to stop other previous requests
 
   const results = await provider.search({ query: input.value}); //this migth trhow an error if the order stop order has been executed;
+  console.log(results);
   if (results == []){
     ;
   }
@@ -28,7 +29,10 @@ input.addEventListener('input', async (e) => {
   for (let i=0; i<results.length; i++){
     document.getElementById(`location-${i}`).addEventListener("click", function(){
       const d = distance(results[i].bounds[0][0], results[i].bounds[1][0], results[i].bounds[0][1], results[i].bounds[1][1]);
-      map.flyTo([results[i].y, results[i].x], (-((Math.log(d/40075))/(Math.log(2))))+1);
+      var zoom = (-((Math.log(d/40075))/(Math.log(2))))+1;
+      if (zoom > 18)
+        zoom = 18;
+      map.flyTo([results[i].y, results[i].x], zoom);
       result.innerHTML = "";
     });
   }

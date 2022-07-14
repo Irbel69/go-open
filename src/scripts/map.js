@@ -6,3 +6,6 @@ L.tileLayer(tilesProvider, {
     maxZoom: 18,
 }).addTo(map);
 
+
+
+document.querySelector("div.leaflet-control-attribution a").innerHTML="<a href='index.html'>Marcel Gruñeiro</a>";
