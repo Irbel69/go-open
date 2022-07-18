@@ -42,24 +42,42 @@
     <hr>
     <div class="select-location-panel">
       <div class="location-input">
-        <i class="fa-solid fa-person"></i>
-        <div class="text-input">
-          <input type="text" placeholder="Introduce your starting poin">
-          <button><i class="fa-solid fa-location-dot"></i></button>
-        </div>
+        <i class="fa-solid fa-house-chimney"></i>
+       <div class="select-location-button">
+          Select location
+          <i class="fa-solid fa-location-dot"></i>
+       </div>
       </div>
       <div class="location-input">
         <i class="fa-solid fa-map-pin"></i>
-        <div class="text-input">
-          <input type="text" placeholder="Introduce your destination">
-          <button><i class="fa-solid fa-location-dot"></i></button>
-        </div>
+        <div class="select-location-button">
+          Select destination
+          <i class="fa-solid fa-location-dot"></i>
+       </div>
       </div>
+    </div>
+    <div class="select-algorithm-panel">
+      <div class="scrolling-wrapper">
+        <div class="card"><div class="card-content"><i class="fa-solid fa-star"></i><h2>A*/A-Star</h2></div></div>
+        <div class="card"><div class="card-content"><i class="fa-solid fa-magnifying-glass-location"></i><h2>Dijkstra</h2></div></div>
+        <div class="card"><div class="card-content"><i class="fa-solid fa-share-nodes"></i></i><h2>DFS</h2></div></div>
+        <div class="card"><div class="card-content"><i class="fa-solid fa-sitemap"></i><h2>BFS</h2></div></div>
+      </div>
+    </div>
+    <div class="select-show-animations-panel">
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+        Show animated process
+    </div>
+    <div class="end-form-container">
+      <button class="end-form-button">Calculate</button>
     </div>
   </div>
 
   <div class="other-buttons-panel">
-    <button id="new-route-button"><i class="fa-solid fa-route"></i></button>
+    <button id="new-route-button" class="primary-button"><i class="fa-solid fa-route"></i></button>
   </div>
   <div id="map"></div>
 </body>

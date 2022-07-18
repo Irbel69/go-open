@@ -24,7 +24,7 @@ input.addEventListener('input', async (e) => {
     <div class='search-engine-location' id='location-${i}'>
       ${results[i].label}
     <div>
-    `;
+    `.replace(input.value, `<b>${input.value}</b>`);
   }
   for (let i=0; i<results.length; i++){
     document.getElementById(`location-${i}`).addEventListener("click", function(){
