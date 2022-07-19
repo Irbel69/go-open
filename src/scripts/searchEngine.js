@@ -9,10 +9,14 @@ form.addEventListener('submit', function (e){
 });
 
 input.addEventListener('input', async (e) => {
+  var i1 = input.value;
+  await sleep(200);
+  var i2 = input.value;
+  if (i1 != i2)
+    return 0;
   console.log(e);
   result.innerHTML="<div class='loading-screen'><div class='loader'></div> <p>Searching results...</p></div>";
   window.stop(); //in order to stop other previous requests
-
   const results = await provider.search({ query: input.value}); //this migth trhow an error if the order stop order has been executed;
   console.log(results);
   if (results == []){

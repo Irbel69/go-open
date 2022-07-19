@@ -26,3 +26,7 @@ let r = 6371;
 // calculate the result
 return(c * r);
 } 
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
