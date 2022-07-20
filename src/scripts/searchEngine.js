@@ -9,20 +9,19 @@ form.addEventListener('submit', function (e){
 });
 
 input.addEventListener('input', async (e) => {
+  result.innerHTML="<div class='loading-screen'><div class='loader'></div> <p>Searching results...</p></div>";
   var i1 = input.value;
   await sleep(200);
-  var i2 = input.value;
-  if (i1 != i2)
-    return 0;
-  console.log(e);
-  result.innerHTML="<div class='loading-screen'><div class='loader'></div> <p>Searching results...</p></div>";
+  if (i1 != input.value)
+    return 0; //stop function
   window.stop(); //in order to stop other previous requests
   const results = await provider.search({ query: input.value}); //this migth trhow an error if the order stop order has been executed;
   console.log(results);
-  if (results == []){
-    ;
-  }
   result.innerHTML="";
+  if (results.length==0){
+    console.log("empty")
+    result.innerHTML="<div class='no-results-screen'><i class='fa-solid fa-magnifying-glass'></i><p>No results for this search :( <br>Contribute in <a href='https://www.openstreetmap.org' target='_blank'>OSM</a>!</p></div>";
+  }
   for (let i=0; i<results.length; i++){
     result.innerHTML += `
     <div class='search-engine-location' id='location-${i}'>
@@ -45,5 +44,7 @@ input.addEventListener('input', async (e) => {
 input.addEventListener("keydown", function(e){
   if (e.code == "Escape")
     result.innerHTML = "";
+  else if (e.code == "Enter")
+    console.log("Finish this");
 })
   
