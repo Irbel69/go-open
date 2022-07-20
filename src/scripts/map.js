@@ -5,6 +5,7 @@ let map = L.map("map").setView([41.61674, 0.62218], 13);
 
 L.tileLayer(tilesProvider, {
     maxZoom: 18,
+    //detectRetina: true blurry map on mobile devices
 }).addTo(map);
 
 
