@@ -15,3 +15,8 @@ fetch('https://www.overpass-api.de/api/interpreter?data=[out:json];way(41.6004,0
 */
 
 
+
+
+//https://www.overpass-api.de/api/interpreter?data=[out:json];(node["highway"](41.6004,0.5881,41.6298,0.6555);way["highway"](41.6004,0.5881,41.6298,0.6555);relation["highway"](41.6004,0.5881,41.6298,0.6555););
+
+//https://www.overpass-api.de/api/interpreter?data=[out:json][timeout:25];(node["highway"](41.6004,0.5881,41.6298,0.6555);way["highway"](41.6004,0.5881,41.6298,0.6555);relation["highway"](41.6004,0.5881,41.6298,0.6555););out body;>;out skel qt;

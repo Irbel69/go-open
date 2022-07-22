@@ -17,7 +17,6 @@ input.addEventListener('input', async (e) => {
     return 0; //stop function
   window.stop(); //in order to stop other previous requests
   const results = await provider.search({ query: input.value}); //this migth trhow an error if the order stop order has been executed;
-  console.log(results);
   result.innerHTML="";
 
   if (input.value == "")
@@ -29,9 +28,12 @@ input.addEventListener('input', async (e) => {
   for (let i=0; i<results.length; i++){
     result.innerHTML += `
     <div class='search-engine-location' id='location-${i}'>
-      ${results[i].label}
+      <div class='search-engine-content-separator'>
+       <i class="fa-solid fa-earth-europe"></i>
+       <div>${results[i].label.replace(input.value,`<b>${input.value}</b>`)}</div>
+      </div>
     <div>
-    `.replace(input.value, `<b>${input.value}</b>`);
+    `;
   }
 
   for (let i=0; i<results.length; i++){
@@ -53,3 +55,18 @@ input.addEventListener("keydown", function(e){
     console.log("Finish this");
 })
   
+
+input.addEventListener('input', function(){
+  console.log(input.value.length,  document.getElementById("input-cross-mark"));
+  if (input.value.length > 0)
+    document.getElementById("input-cross-mark").style.visibility = "inherit";
+  else
+    document.getElementById("input-cross-mark").style.visibility = "hidden";
+});
+
+
+document.getElementById("input-cross-mark").addEventListener("click", function(){
+  input.value = "";
+  result.innerHTML = "";
+  document.getElementById("input-cross-mark").style.visibility = "hidden";
+});

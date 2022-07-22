@@ -24,9 +24,14 @@
   <div class="search-panel">
     <div id="search-engine">
       <form>
-        <input type="text" id="search-engine-input" class="input-text" placeholder="Insert location">
+        <div class="input-text" >
+          <i class="fa-solid fa-bars"></i>
+          <input type="text" id="search-engine-input" placeholder="Insert location">
+          <i class="fa-solid fa-xmark erase-content-i" id="input-cross-mark"></i>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
       </form>
-      <div id="search-engine-results"></div>
+      <div id="search-engine-results" class="search-engine-results"></div>
     </div>
   </div>
   <div class="planning-route-panel">
@@ -58,14 +63,15 @@
           </div>
           </div>
         </div>
+        
         <div class="select-algorithm-container">
           <div class="select-algorithm-panel">
             <i class="fa-solid fa-code-branch"></i>
             <div class="form-select">
-              <label for="select-1658324317245" class="">Algorithm</label>
+              <label for="select-1658324317245" class="select-algorithm-label">Algorithm</label>
               <select class="form-control" name="select-1658324317245" id="select-1658324317245">
                   <option value="option-1">Dijkstra</option>
-                  <option value="option-2" selected="true">A-Star</option>
+                  <option value="option-2" selected="true">A-Star (recommended)</option>
                   <option value="option-3">Deep First Search</option>
                   <option value="option-4">Breadth First Search</option>
               </select>
