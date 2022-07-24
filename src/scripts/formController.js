@@ -36,3 +36,28 @@ document.querySelectorAll(".select-location-button").forEach(element => {
         });
     });
 });
+
+
+document.getElementById("calculate-route-button").addEventListener("click", function(){
+    try {
+        travelOptions.vehicle = document.querySelector(".route-btn-selected").id;
+        travelOptions.algorithm = document.getElementById("select-1658324317245").value;
+        travelOptions.process = document.getElementById("show-process-checkbox");    
+        if (travelOptions.start.length == 0 || travelOptions.start.length == 0){
+            const n = 1;
+            n.replace(2,""); //You can't replace a int (force to catch)
+        }
+        cleanError();
+    } catch (error) {
+        formError();
+        console.log(error);
+    }
+});
+
+
+function formError(){
+    document.getElementById("form-error-message").style.visibility = "inherit";
+}
+function cleanError(){
+    document.getElementById("form-error-message").style.visibility = "hidden";
+}

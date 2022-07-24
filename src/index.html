@@ -81,7 +81,7 @@
         <div class="show-animations-container">
           <div class="select-show-animations-panel">
             <label class="switch">
-              <input type="checkbox" checked>
+              <input type="checkbox" id="show-process-checkbox">
               <span class="slider round"></span>
             </label>
               Display animated process 
@@ -89,9 +89,10 @@
         </div>
       </div>
       <div class="end-form-container">
-        <div class="wrapper">
+        <div class="wrapper" id="calculate-route-button" class="calculate-route-button">
           <a class="button">Calculate</a>
         </div>
+        <p class="error-message" id="form-error-message">Please complete all the fields</p>
       </div>
     </div>
   </div>
