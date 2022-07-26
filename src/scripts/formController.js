@@ -48,6 +48,9 @@ document.getElementById("calculate-route-button").addEventListener("click", func
             n.replace(2,""); //You can't replace a int (force to catch)
         }
         cleanError();
+        document.querySelector(".planning-route-panel").style.display = "none";
+        buildRoute(travelOptions);
+
     } catch (error) {
         formError();
         console.log(error);

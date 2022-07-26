@@ -24,7 +24,7 @@
   <div class="search-panel">
     <div id="search-engine">
       <form>
-        <div class="input-text" >
+        <div class="input-text">
           <i class="fa-solid fa-bars"></i>
           <input type="text" id="search-engine-input" placeholder="Insert location">
           <i class="fa-solid fa-xmark erase-content-i" id="input-cross-mark"></i>
@@ -39,7 +39,7 @@
       <div class="retrocede-btn route-btn" id="hide-route-panel"><i class="fa-solid fa-arrow-left"></i></div>
       <div class="vehicle-panel">
         <div class="route-btn" id="car"><i class="fa-solid fa-car"></i></div>
-        <div class="route-btn" id="waling"><i class="fa-solid fa-person-walking"></i></div>
+        <div class="route-btn" id="walking"><i class="fa-solid fa-person-walking"></i></div>
         <div class="route-btn" id="bike"><i class="fa-solid fa-person-biking"></i></div>
         <div class="route-btn" id="train"><i class="fa-solid fa-train-subway"></i></div>
       </div>
@@ -50,30 +50,30 @@
         <div class="select-location-panel">
           <div class="location-input">
             <i class="fa-solid fa-house-chimney"></i>
-          <div class="select-location-button" id="start-location">
+            <div class="select-location-button" id="start-location">
               Select location
               <i class="fa-solid fa-location-dot"></i>
-          </div>
+            </div>
           </div>
           <div class="location-input">
             <i class="fa-solid fa-map-pin"></i>
             <div class="select-location-button" id="end-location">
               Select destination
               <i class="fa-solid fa-location-dot"></i>
-          </div>
+            </div>
           </div>
         </div>
-        
+
         <div class="select-algorithm-container">
           <div class="select-algorithm-panel">
             <i class="fa-solid fa-code-branch"></i>
             <div class="form-select">
               <label for="select-1658324317245" class="select-algorithm-label">Algorithm</label>
               <select class="form-control" name="select-1658324317245" id="select-1658324317245">
-                  <option value="option-1">Dijkstra</option>
-                  <option value="option-2" selected="true">A-Star (recommended)</option>
-                  <option value="option-3">Deep First Search</option>
-                  <option value="option-4">Breadth First Search</option>
+                <option value="option-1">Dijkstra</option>
+                <option value="option-2" selected="true">A-Star (recommended)</option>
+                <option value="option-3">Deep First Search</option>
+                <option value="option-4">Breadth First Search</option>
               </select>
             </div>
           </div>
@@ -84,7 +84,7 @@
               <input type="checkbox" id="show-process-checkbox">
               <span class="slider round"></span>
             </label>
-              Display animated process 
+            Display animated process
           </div>
         </div>
       </div>
@@ -100,6 +100,15 @@
   <div class="other-buttons-panel">
     <button id="new-route-button" class="primary-button"><i class="fa-solid fa-route"></i></button>
   </div>
+
+  <div id="notification" class="notifcation-panel">
+    <div class='loading-screen'>
+      <div class='loader'></div>
+    </div>
+    <p id="notification-text"></p>
+    <i class="fa-solid fa-xmark erase-content-i" id="input-cross-mark" style="visibility: inherit;"></i>
+  </div>
+
   <div id="map"></div>
 </body>
 
@@ -112,8 +121,10 @@
 <script src="scripts/map.js"></script>
 <script src="scripts/searchEngine.js"></script>
 <script src="scripts/zoomControl.js"></script>
-<script src="scripts/request.js"></script>
+<script src="scripts/buildRequest.js"></script>
+<script src="scripts/notificationController.js"></script>
 <script src="scripts/routePlanning.js"></script>
+<script src="scripts/route.js"></script>
 <script src="scripts/formController.js"></script>
 
 </html>
