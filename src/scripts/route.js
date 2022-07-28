@@ -1,13 +1,11 @@
 async function buildRoute(){
 
-    showNotification("Fetching data...");
+    while (fetching1 || fetching2){
+        console.log("Waiting...");
+        await sleep(100);
+    }
 
-    startNode = await getClosestNode(travelOptions.start[0], travelOptions.start[1]);
-    console.log(startNode);
-    endNode = await getClosestNode(travelOptions.end[0], travelOptions.end[1]);
-    console.log(endNode);
-
-
+    showNotification("Fetching map data...");
     const req = buildOverpassApiUrl(travelOptions.vehicle);
     console.log(req);
     var obj;
@@ -29,7 +27,7 @@ async function buildRoute(){
     console.log("dijkstra")
     ;
     else if (travelOptions.algorithm == "a-star")
-        aStar(obj, startNode, endNode, travelOptions.process);
+        aStar(obj, travelOptions.startNode, travelOptions.endNode, travelOptions.process);
     ;
 
     document.querySelector("#new-route-button").style.display = "block";

@@ -45,7 +45,6 @@ async function getClosestNode(lat, lon){
         )
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             data.elements.forEach(element => { //will crash if array is empty = correct
                 if (element.type == "way") 
                     nodeID = element.nodes[0];
@@ -58,5 +57,9 @@ async function getClosestNode(lat, lon){
         });
         range += 25;
     }
+    console.log(nodeID);
     return nodeID
 }
+
+var fetching1;
+var fetching2;
