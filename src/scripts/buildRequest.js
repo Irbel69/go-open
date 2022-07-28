@@ -1,36 +1,24 @@
 function buildOverpassApiUrl(vehicleId) {
     var bounds = map.getBounds().getSouth() + ',' + map.getBounds().getWest() + ',' + map.getBounds().getNorth() + ',' + map.getBounds().getEast();
-    if (vehicleId=="car")
-      return `
-        https://www.overpass-api.de/api/interpreter?data=
-        [out:json];
-        (
-          node["highway"](${bounds});
-          way["highway"](${bounds});
-          relation["highway"](${bounds});
-        );
-        out body;
-        >;
-        out skel qt;`
-        .replace("\n", "").replace(" ","");
-    else if (vehicleId == "walking")
-        return `
-        https://www.overpass-api.de/api/interpreter?data=
-        [out:json];
-        (
-          node["highway"]["highway"!="motorway"]["highway"!="trunk"](${bounds});
-          way["highway"]["highway"!="motorway"]["highway"!="trunk"](${bounds});
-          relation["highway"]["highway"!="motorway"]["highway"!="trunk"](${bounds});
-        );
-        out body;
-        >;
-        out skel qt;`
-        .replace("\n", "").replace(" ","");
-
-
-
+    return `
+      https://www.overpass-api.de/api/interpreter?data=
+      [out:json];
+      ( 
+      way${buildOverpassQuery(vehicleId)}(${bounds});
+      );
+      out body;
+      >;
+      out skel qt;`
+    .replace("\n", "").replace(" ","");
   }
   
+function buildOverpassQuery(vehicleId){
+  if (vehicleId=="car")
+    return `["highway"]`;
+  else if (vehicleId == "walking")
+    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]`;
+
+}
   //https://www.overpass-api.de/api/interpreter?data=[out:json];way(41.6004,0.5881,41.6298,0.6555);out%20meta;
 /*
 fetch('https://www.overpass-api.de/api/interpreter?data=[out:json];way(41.6004,0.5881,41.6298,0.6555);out%20meta;')

@@ -57,7 +57,6 @@ input.addEventListener("keydown", function(e){
   
 
 input.addEventListener('input', function(){
-  console.log(input.value.length,  document.getElementById("input-cross-mark"));
   if (input.value.length > 0)
     document.getElementById("input-cross-mark").style.visibility = "inherit";
   else

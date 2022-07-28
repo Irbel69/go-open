@@ -26,7 +26,7 @@
       <form>
         <div class="input-text">
           <i class="fa-solid fa-bars"></i>
-          <input type="text" id="search-engine-input" placeholder="Insert location">
+          <input type="text" id="search-engine-input" placeholder="Insert location" autocomplete="off">
           <i class="fa-solid fa-xmark erase-content-i" id="input-cross-mark"></i>
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
@@ -70,10 +70,10 @@
             <div class="form-select">
               <label for="select-1658324317245" class="select-algorithm-label">Algorithm</label>
               <select class="form-control" name="select-1658324317245" id="select-1658324317245">
-                <option value="option-1">Dijkstra</option>
-                <option value="option-2" selected="true">A-Star (recommended)</option>
-                <option value="option-3">Deep First Search</option>
-                <option value="option-4">Breadth First Search</option>
+                <option value="dijsktra">Dijkstra</option>
+                <option value="a-star" selected="true">A-Star (recommended)</option>
+                <option value="DFS">Deep First Search</option>
+                <option value="BFS">Breadth First Search</option>
               </select>
             </div>
           </div>
@@ -126,5 +126,7 @@
 <script src="scripts/routePlanning.js"></script>
 <script src="scripts/route.js"></script>
 <script src="scripts/formController.js"></script>
+<script src="scripts/algorithms/aStar.js"></script>
+<script src="scripts/algorithms/dijkstra.js"></script>
 
 </html>
