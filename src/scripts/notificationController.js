@@ -3,7 +3,7 @@ function showNotification(text){
     document.getElementById("notification").style.display = "flex";
 }
 
-function hideNotification(text){
+function hideNotification(){
     document.getElementById("notification").style.display = "none";
 }
 

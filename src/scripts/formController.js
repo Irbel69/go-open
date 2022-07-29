@@ -44,7 +44,7 @@ document.querySelectorAll(".select-location-button").forEach(element => {
 
             node = await getClosestNode(lat, lon);
 
-            if (e.path.id == "start-location"){
+            if (e.path[0].id == "start-location"){
                 travelOptions.startNode = node;
                 fetching1 = false;
             }
