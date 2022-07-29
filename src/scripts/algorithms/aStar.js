@@ -1,3 +1,3 @@
-function aStar(mapJSON, startingNode, endingNode, process){
+function aStar(startingNode, endingNode, process){
     console.log("A-Star");
 }
