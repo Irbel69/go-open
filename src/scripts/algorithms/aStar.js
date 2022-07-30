@@ -1,5 +1,10 @@
 async function aStar(startingNode, endingNode, process){
 
+    startingNode = 9187345930;
+    endingNode = 3763593461;
+
+    console.log(mapNodes[startingNode].colidantNodes);
+
     var nodeTree = {};
     
     nodeTree[startingNode] = {};
@@ -18,15 +23,16 @@ async function aStar(startingNode, endingNode, process){
         var nextNodeSelector = [];
 
         mapNodes[actualNode].colidantNodes.forEach(element => {
+            console.log("PENE:",mapNodes[actualNode].colidantNodes)
             if (  !(Object.keys(nodeTree).includes(String(element))) || (nodeTree[element].visited == false && nodeTree[element].realCost < nodeTree[actualNode].realCost + distance(mapNodes[actualNode].lat, mapNodes[element].lat, mapNodes[actualNode].lon, mapNodes[element].lon))){
 
                 nodeTree[element] = {};
                 nodeTree[element].realCost = nodeTree[actualNode].realCost + distance(mapNodes[actualNode].lat, mapNodes[element].lat, mapNodes[actualNode].lon, mapNodes[element].lon);
                 nodeTree[element].predecesor = actualNode;
-                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon);
+                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon)*1.5;
                 nodeTree[element].visited = false;
 
-                nextNodeSelector.push([element, nodeTree[element].cost]);
+                nextNodeSelector.push([String(element), nodeTree[element].cost]);
             }
         });
         
@@ -34,6 +40,8 @@ async function aStar(startingNode, endingNode, process){
             if (!nodeTree[element].visited)
                 nextNodeSelector.push([element, nodeTree[element].cost]);
         });
+
+        console.log("NODESelector:",nextNodeSelector);
 
         nodeTree[actualNode].visited = true;
         map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
@@ -44,7 +52,9 @@ async function aStar(startingNode, endingNode, process){
         }));
 
         if (nextNodeSelector.length == 0){
+            console.log("ActualNode1", actualNode);
             actualNode = nodeTree[actualNode].predecesor;
+            console.log("ActualNode2", actualNode);
         }
         else{
             var nextNodeCost = nextNodeSelector[0][1];
@@ -58,7 +68,7 @@ async function aStar(startingNode, endingNode, process){
                 }
             });
         }
-        await sleep(0.1);
+        await sleep(10);
     }
     L.circle([mapNodes[endingNode].lat, mapNodes[endingNode].lon], 20).addTo(map);
 

@@ -16,7 +16,7 @@ function buildOverpassQuery(vehicleId){
   if (vehicleId=="car")
     return `["highway"]`;
   else if (vehicleId == "walking")
-    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]`;
+    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]["highway"!="primary"]`;
 
 }
   //https://www.overpass-api.de/api/interpreter?data=[out:json];way(41.6004,0.5881,41.6298,0.6555);out%20meta;
