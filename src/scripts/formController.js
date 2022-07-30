@@ -2,8 +2,6 @@ var travelOptions = {
     vehicle: "",
     start: [],
     end: [],
-    startNode: 0,
-    endNode: 0,
     algorithm: "",
     process: false
 };
@@ -36,22 +34,6 @@ document.querySelectorAll(".select-location-button").forEach(element => {
                     map.removeLayer(travelOptions.end[2]);
                 travelOptions.end = [lat, lon, marker];
             }
-            
-            if (e.path.id == "start-location")
-                fetching1 = true;
-            else
-                fetching2 = true;
-
-            node = await getClosestNode(lat, lon);
-
-            if (e.path[0].id == "start-location"){
-                travelOptions.startNode = node;
-                fetching1 = false;
-            }
-            else{
-                travelOptions.endNode = node;
-                fetching2 = false;
-            }
    
         });
     });
@@ -62,7 +44,7 @@ document.getElementById("calculate-route-button").addEventListener("click", func
     try {
         travelOptions.vehicle = document.querySelector(".route-btn-selected").id;
         travelOptions.algorithm = document.getElementById("select-1658324317245").value;
-        travelOptions.process = document.getElementById("show-process-checkbox");    
+        travelOptions.process = document.getElementById("show-process-checkbox").checked;    
         if (travelOptions.start.length == 0 || travelOptions.end.length == 0){
             const n = 1;
             n.replace(2,""); //You can't replace a int (force to catch)

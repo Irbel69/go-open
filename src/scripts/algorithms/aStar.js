@@ -1,8 +1,5 @@
 async function aStar(startingNode, endingNode, process){
 
-    startingNode = 9187345930;
-    endingNode = 3763593461;
-
     console.log(mapNodes[startingNode].colidantNodes);
 
     var nodeTree = {};
@@ -23,7 +20,6 @@ async function aStar(startingNode, endingNode, process){
         var nextNodeSelector = [];
 
         mapNodes[actualNode].colidantNodes.forEach(element => {
-            console.log("PENE:",mapNodes[actualNode].colidantNodes)
             if (  !(Object.keys(nodeTree).includes(String(element))) || (nodeTree[element].visited == false && nodeTree[element].realCost < nodeTree[actualNode].realCost + distance(mapNodes[actualNode].lat, mapNodes[element].lat, mapNodes[actualNode].lon, mapNodes[element].lon))){
 
                 nodeTree[element] = {};
@@ -41,20 +37,18 @@ async function aStar(startingNode, endingNode, process){
                 nextNodeSelector.push([element, nodeTree[element].cost]);
         });
 
-        console.log("NODESelector:",nextNodeSelector);
 
         nodeTree[actualNode].visited = true;
-        map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
-            color: 'red',
-            weight: 3,
-            opacity: 0.5,
-            smoothFactor: 1
-        }));
+        if (process)
+            map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
+                color: 'red',
+                weight: 3,
+                opacity: 1,
+                smoothFactor: 1
+            }));
 
         if (nextNodeSelector.length == 0){
-            console.log("ActualNode1", actualNode);
             actualNode = nodeTree[actualNode].predecesor;
-            console.log("ActualNode2", actualNode);
         }
         else{
             var nextNodeCost = nextNodeSelector[0][1];
@@ -68,9 +62,18 @@ async function aStar(startingNode, endingNode, process){
                 }
             });
         }
-        await sleep(10);
+        if (process) await sleep(100);
     }
-    L.circle([mapNodes[endingNode].lat, mapNodes[endingNode].lon], 20).addTo(map);
+
+    while (actualNode != startingNode){
+        map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
+            color: 'blue',
+            weight: 6,
+            opacity: 1,
+            smoothFactor: 1
+        }));
+        actualNode = nodeTree[actualNode].predecesor;
+    }
 
     alert("Final!");
 }

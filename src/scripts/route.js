@@ -3,13 +3,7 @@ var mapWays = {}; //declared here to be have a global access
 
 async function buildRoute(){
 
-    showNotification("Fetching node positions...");
-    while (fetching1 || fetching2){
-        console.log("Waiting...");
-        await sleep(100);
-    }
-
-    showNotification("Fetching map data...");
+showNotification("Fetching map data...");
 
 
     const req = buildOverpassApiUrl(travelOptions.vehicle);
@@ -26,6 +20,8 @@ async function buildRoute(){
         hideNotification();
     });
     console.log(obj);
+
+
 
     //Data "parsing" in order to have a quicker access
     showNotification("Parsing data...");
@@ -58,6 +54,29 @@ async function buildRoute(){
     });
     delete obj; 
 
+    //getting closest nodes
+
+    var startClosestDistance = distance(travelOptions.start[0], mapNodes[Object.keys(mapNodes)[0]].lat, travelOptions.start[1], mapNodes[Object.keys(mapNodes)[0]].lon);
+    var startNode = Object.keys(mapNodes)[0];
+    Object.keys(mapNodes).forEach(element => {
+        var elementDist = distance(travelOptions.start[0], mapNodes[element].lat, travelOptions.start[1], mapNodes[element].lon);
+        if (elementDist < startClosestDistance){
+            startClosestDistance = elementDist;
+            startNode = element;
+        }
+    });
+
+    var endClosestDistance = distance(travelOptions.end[0], mapNodes[Object.keys(mapNodes)[0]].lat, travelOptions.end[1], mapNodes[Object.keys(mapNodes)[0]].lon);
+    var endNode = Object.keys(mapNodes)[0];
+    Object.keys(mapNodes).forEach(element => {
+        var elementDist = distance(travelOptions.end[0], mapNodes[element].lat, travelOptions.end[1], mapNodes[element].lon);
+        if (elementDist < endClosestDistance){
+            endClosestDistance = elementDist;
+            endNode = element;
+        }
+    });
+
+
 
     showNotification("Applying algorithm...");
     await sleep(10);
@@ -65,7 +84,7 @@ async function buildRoute(){
     console.log("dijkstra")
     ;
     else if (travelOptions.algorithm == "a-star")
-        aStar(travelOptions.startNode, travelOptions.endNode, travelOptions.process);
+        aStar(startNode, endNode, travelOptions.process);
     ;
 
     document.querySelector("#new-route-button").style.display = "block";

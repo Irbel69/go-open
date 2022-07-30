@@ -31,35 +31,3 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
-async function getClosestNode(lat, lon){
-    var range = 10;
-    var nodeID = 0;
-    while (nodeID == 0){ //fetching this here for time saving, fetching this in the buildRoute function would make the program slower
-        await fetch(`
-            https://www.overpass-api.de/api/interpreter?data=
-            [out:json][timeout:25];(way["highway"](around:${range}, ${lat}, ${lon}););
-            out body;
-            >;
-            out skel qt;`
-        )
-        .then(response => response.json())
-        .then(data => {
-            data.elements.forEach(element => { //will crash if array is empty = correct
-                if (element.type == "way") 
-                    nodeID = element.nodes[0];
-                else // is a node
-                    nodeID = element.id; 
-            });
-        })
-        .catch(error => {
-            console.log(error);
-        });
-        range += 25;
-    }
-    console.log(nodeID);
-    return nodeID
-}
-
-var fetching1;
-var fetching2;
