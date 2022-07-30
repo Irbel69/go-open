@@ -58,8 +58,6 @@ async function buildRoute(){
     });
     delete obj; 
 
-    console.log(mapNodes);
-    console.log(mapWays);
 
     showNotification("Applying algorithm...");
 
