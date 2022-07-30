@@ -58,7 +58,7 @@ async function aStar(startingNode, endingNode, process){
                 }
             });
         }
-        //await sleep(1);
+        await sleep(0.1);
     }
     L.circle([mapNodes[endingNode].lat, mapNodes[endingNode].lon], 20).addTo(map);
 

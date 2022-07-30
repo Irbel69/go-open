@@ -46,7 +46,7 @@ async function buildRoute(){
             };
             for(let i=0; i<element.nodes.length; i++){
                 try{
-                    if (element.nodes[i-1] != undefined)
+                    if (element.nodes[i-1] != undefined && element.tags.oneway != "yes")
                         mapNodes[element.nodes[i]].colidantNodes.push(element.nodes[i-1]);
                 } finally {}
                 try{
@@ -60,7 +60,7 @@ async function buildRoute(){
 
 
     showNotification("Applying algorithm...");
-
+    await sleep(10);
     if (travelOptions.algorithm == "dijkstra")
     console.log("dijkstra")
     ;
