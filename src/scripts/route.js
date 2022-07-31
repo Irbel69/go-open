@@ -2,6 +2,7 @@ var mapNodes = {};
 var mapWays = {}; //declared here to be have a global access
 
 async function buildRoute(){
+    clearMap();
 
 showNotification("Fetching map data...");
 
@@ -81,8 +82,8 @@ showNotification("Fetching map data...");
     showNotification("Applying algorithm...");
     await sleep(10);
     if (travelOptions.algorithm == "dijkstra")
-    console.log("dijkstra")
-    ;
+        dijkstra(startNode, endNode, travelOptions.process);
+    
     else if (travelOptions.algorithm == "a-star")
         aStar(startNode, endNode, travelOptions.process);
     ;
