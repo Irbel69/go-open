@@ -1,9 +1,5 @@
 async function dijkstra(startingNode, endingNode, process){
-    console.log("dijkstera");
-
     var nodeTree = {};
-
-    console.log("Starting:", startingNode, "ending:", endingNode);
     
     nodeTree[startingNode] = {};
     nodeTree[startingNode].cost = 0;

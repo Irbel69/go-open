@@ -24,7 +24,7 @@ document.querySelectorAll(".select-location-button").forEach(element => {
             const marker = L.marker([lat,lon]).addTo(map); 
 
             
-            if (e.path[0].id == "start-location"){
+            if (e.target.id == "start-location"){
                 if (travelOptions.start.length > 0)
                     map.removeLayer(travelOptions.start[2]);
                 travelOptions.start = [lat, lon, marker];
