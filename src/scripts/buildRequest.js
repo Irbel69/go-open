@@ -52,7 +52,6 @@ function getBounds(startNode, endNode){
     horitzontalMargin = 0.5;
  
   //console.log(horitzontalMargin);
-  console.log(verticalDistance, verticalMargin);
 
   if (startNode[1] < endNode[1]){
     bounds["west"] = startNode[1]-horitzontalMargin*multiplier;
@@ -72,7 +71,6 @@ function getBounds(startNode, endNode){
     bounds["south"] = endNode[0]-verticalMargin*multiplier;
   }
 
-  console.log("aa");
   map.addLayer(new L.Polyline([new L.LatLng(bounds.south, bounds.west), new L.LatLng(bounds.south, bounds.east)], {
     color: 'blue',
     weight: 3,

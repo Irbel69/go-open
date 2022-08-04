@@ -2,25 +2,29 @@ var mapNodes = {};
 var mapWays = {}; //declared here to be have a global access
 
 async function buildRoute(){
-    clearMap();
 
-showNotification("Fetching map data...");
+    showNotification("Fetching map data...");
 
 
     const req = buildOverpassApiUrl(travelOptions.vehicle);
     console.log(req);
     obj = {};
 
-    await fetch(req)
-    .then(response => response.json())
-    .then(data => {
-        obj=data;
-    })
-    .catch(error => {
-        console.log(error);
-        hideNotification();
-    });
-    console.log(obj);
+    let requestCounter = 0;
+    while (Object.keys(obj).length == 0 && requestCounter < 4){
+        await fetch(req)
+        .then(response => response.json())
+        .then(data => {
+            obj=data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        console.log(obj);
+        requestCounter++;
+        console.log("Request n*: ", requestCounter);
+        await sleep(2000);
+    }
 
 
 

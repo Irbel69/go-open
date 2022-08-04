@@ -54,8 +54,8 @@ async function aStar(startingNode, endingNode, process){
         nodeTree[actualNode].visited = true;
         if (process && actualNode != startingNode)
             map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
-                color: 'red',
-                weight: 3,
+                color: '#f5aa42',
+                weight: 5,
                 opacity: 1,
                 smoothFactor: 1
             }));
@@ -83,8 +83,8 @@ async function aStar(startingNode, endingNode, process){
 
     while (actualNode != startingNode){
         map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
-            color: 'blue',
-            weight: 6,
+            color: '#42b0f5',
+            weight: 10,
             opacity: 1,
             smoothFactor: 1
         }));

@@ -32,18 +32,3 @@ function sleep(ms) {
 }
 
 var multiplier = 1;
-
-
-async function clearMap(){
-    L.EditToolbar.Delete.include({
-        removeAllLayers: false
-    });
-    
-    new L.Control.Draw({
-        edit: {
-            featureGroup: drawnItems
-        },
-        draw: {
-        }
-    }).addTo(map);
-}

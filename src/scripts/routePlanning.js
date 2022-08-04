@@ -1,13 +1,13 @@
 document.querySelector("#new-route-button").addEventListener("click", function(){
-    document.querySelector("#new-route-button").style.display = "none";
-    document.querySelector(".planning-route-panel").style.display = "block";
+    document.querySelector(".other-buttons-panel").classList.toggle("disabled");
+    document.querySelector(".planning-route-panel").classList.toggle("active");
 });
 
 
 
 document.querySelector("#hide-route-panel").addEventListener("click", function(){
-    document.querySelector("#new-route-button").style.display = "block";
-    document.querySelector(".planning-route-panel").style.display = "none";
+    document.querySelector(".other-buttons-panel").classList.toggle("disabled");
+    document.querySelector(".planning-route-panel").classList.toggle("active");
 });
 
 document.querySelectorAll(".route-btn").forEach(element => 
@@ -21,3 +21,5 @@ document.querySelectorAll(".route-btn").forEach(element =>
         //element.style.border = "1px solid #1868df";
     })
 );
+
+

@@ -10,10 +10,10 @@ var travelOptions = {
 
 document.querySelectorAll(".select-location-button").forEach(element => {  
     element.addEventListener("click", function(e){
-        document.querySelector(".planning-route-panel").style.display = "none"; //slide
+        document.querySelector(".planning-route-panel").classList.toggle("active"); //slide
         map.on('click', async function(ev){
 
-            document.querySelector(".planning-route-panel").style.display = "block"; //slide
+            document.querySelector(".planning-route-panel").classList.toggle("active"); //slide
             map.off('click');
 
 
@@ -40,7 +40,7 @@ document.querySelectorAll(".select-location-button").forEach(element => {
 });
 
 
-document.getElementById("calculate-route-button").addEventListener("click", function(){
+document.getElementById("calculate-route-button").addEventListener("click", async function(){
     try {
         travelOptions.vehicle = document.querySelector(".route-btn-selected").id;
         travelOptions.algorithm = document.getElementById("select-1658324317245").value;
@@ -55,7 +55,9 @@ document.getElementById("calculate-route-button").addEventListener("click", func
             n.replace(2,""); //You can't replace a int (force to catch)    
         }
         cleanError();
-        document.querySelector(".planning-route-panel").style.display = "none";
+        await sleep(200);
+        document.querySelector(".planning-route-panel").classList.toggle("active");
+        document.querySelector(".other-buttons-panel").classList.toggle("disabled");
         buildRoute();
     } catch (error) {
         formError();
