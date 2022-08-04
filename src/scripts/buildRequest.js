@@ -71,30 +71,32 @@ function getBounds(startNode, endNode){
     bounds["south"] = endNode[0]-verticalMargin*multiplier;
   }
 
-  map.addLayer(new L.Polyline([new L.LatLng(bounds.south, bounds.west), new L.LatLng(bounds.south, bounds.east)], {
-    color: 'blue',
-    weight: 3,
-    opacity: 1,
-    smoothFactor: 1
-}));
-map.addLayer(new L.Polyline([new L.LatLng(bounds.south, bounds.west), new L.LatLng(bounds.north, bounds.west)], {
-  color: 'blue',
-  weight: 3,
-  opacity: 1,
-  smoothFactor: 1
-}));
-map.addLayer(new L.Polyline([new L.LatLng(bounds.north, bounds.west), new L.LatLng(bounds.north, bounds.east)], {
-  color: 'blue',
-  weight: 3,
-  opacity: 1,
-  smoothFactor: 1
-}));
-map.addLayer(new L.Polyline([new L.LatLng(bounds.north, bounds.east), new L.LatLng(bounds.south, bounds.east)], {
-  color: 'blue',
-  weight: 3,
-  opacity: 1,
-  smoothFactor: 1
-}));
+  if (travelOptions.process){
+    map.addLayer(new L.Polyline([new L.LatLng(bounds.south, bounds.west), new L.LatLng(bounds.south, bounds.east)], {
+      color: 'blue',
+      weight: 3,
+      opacity: 1,
+      smoothFactor: 1
+    }));
+    map.addLayer(new L.Polyline([new L.LatLng(bounds.south, bounds.west), new L.LatLng(bounds.north, bounds.west)], {
+      color: 'blue',
+      weight: 3,
+      opacity: 1,
+      smoothFactor: 1
+    }));
+    map.addLayer(new L.Polyline([new L.LatLng(bounds.north, bounds.west), new L.LatLng(bounds.north, bounds.east)], {
+      color: 'blue',
+      weight: 3,
+      opacity: 1,
+      smoothFactor: 1
+    }));
+    map.addLayer(new L.Polyline([new L.LatLng(bounds.north, bounds.east), new L.LatLng(bounds.south, bounds.east)], {
+      color: 'blue',
+      weight: 3,
+      opacity: 1,
+      smoothFactor: 1
+    }));
+  }
 
   return bounds;
 }

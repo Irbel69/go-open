@@ -42,6 +42,13 @@ input.addEventListener('input', async (e) => {
       var zoom = (-((Math.log(d/40075))/(Math.log(2))))+1;
       if (zoom > 18)
         zoom = 18;
+
+      if (travelOptions.start.length == 0){
+        const marker = L.marker([results[i].y, results[i].x]).addTo(map);
+        locationInputComplete("start", travelOptions, results[i].y, results[i].x, marker)
+        travelOptions.start = [results[i].y, results[i].x, marker]
+      }
+      
       map.flyTo([results[i].y, results[i].x], zoom);
       result.innerHTML = "";
     });
@@ -69,3 +76,4 @@ document.getElementById("input-cross-mark").addEventListener("click", function()
   result.innerHTML = "";
   document.getElementById("input-cross-mark").style.visibility = "hidden";
 });
+

@@ -10,6 +10,7 @@ var travelOptions = {
 
 document.querySelectorAll(".select-location-button").forEach(element => {  
     element.addEventListener("click", function(e){
+        console.log(document.querySelectorAll(".select-location-button"));
         document.querySelector(".planning-route-panel").classList.toggle("active"); //slide
         map.on('click', async function(ev){
 
@@ -22,17 +23,13 @@ document.querySelectorAll(".select-location-button").forEach(element => {
             const lon = latlng.lng 
 
             const marker = L.marker([lat,lon]).addTo(map); 
-
-            
+        
+            console.log(e.target);
             if (e.target.id == "start-location"){
-                if (travelOptions.start.length > 0)
-                    map.removeLayer(travelOptions.start[2]);
-                travelOptions.start = [lat, lon, marker];
+                locationInputComplete("start", travelOptions, lat, lon, marker);
             }
             else {//end-location = id
-                if (travelOptions.end.length > 0)
-                    map.removeLayer(travelOptions.end[2]);
-                travelOptions.end = [lat, lon, marker];
+                locationInputComplete("end", travelOptions, lat, lon, marker);
             }
    
         });
@@ -71,4 +68,31 @@ function formError(){
 }
 function cleanError(){
     document.getElementById("form-error-message").style.visibility = "hidden";
+}
+
+async function locationInputComplete(s, travelOptions, lat, lon, marker){
+    if (travelOptions[s].length > 0)
+        map.removeLayer(travelOptions[s][2]);
+
+    travelOptions[s] = [lat, lon, marker];
+
+    document.querySelector(`#${s}-location p`).innerHTML = "✅​ ​" + await getLatLonName(lat, lon);
+    if (document.querySelector(`#${s}-location p`).innerHTML.length > 30)
+        document.querySelector(`#${s}-location p`).classList.add("scroll");
+}
+
+
+async function getLatLonName(lat, lon){
+    const req=`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+    console.log(req);
+    let result;
+    await fetch(req)
+    .then(response => response.json())
+    .then(data => {
+        result=data;
+    })
+    .catch(error => {
+        console.log(error);
+    });
+    return `${result.address.road}, ${result.address.house_number}`.replace(", undefined", "").replace("undefined", result.address.county);
 }

@@ -319,6 +319,10 @@ hr {
   font-size: 1.2rem;
   transition: ease 0.5s;
   border-bottom: 1px solid;
+  overflow: hidden;
+}
+.select-location-button * {
+  pointer-events: none;
 }
 
 .select-location-button:hover {
@@ -330,7 +334,24 @@ hr {
 
 .select-location-button i {
   position: absolute;
-  right: 0.7rem;
+  right: 0;
+}
+
+.select-location-button p.scroll {
+  animation: slide-left 10s linear infinite;
+  display: inline;
+  white-space: nowrap;
+}
+
+@keyframes slide-left {
+  from {
+    -webkit-transform: translateX(0%);
+    transform: translateX(110%);
+  }
+  to {
+    -webkit-transform: translateX(0%);
+    transform: translateX(-110%);
+  }
 }
 
 @media(max-width: 480px) {
