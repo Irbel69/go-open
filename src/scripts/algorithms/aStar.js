@@ -80,8 +80,10 @@ async function aStar(startingNode, endingNode, process){
         if (process) await sleep(processDelay);
 
     }
+    var result = [];
 
     while (actualNode != startingNode){
+        result.push([actualNode, nodeTree[actualNode].realCost]);
         map.addLayer(new L.Polyline([new L.LatLng(mapNodes[actualNode].lat, mapNodes[actualNode].lon), new L.LatLng(mapNodes[nodeTree[actualNode].predecesor].lat, mapNodes[nodeTree[actualNode].predecesor].lon)], {
             color: '#42b0f5',
             weight: 10,
@@ -91,4 +93,6 @@ async function aStar(startingNode, endingNode, process){
         actualNode = nodeTree[actualNode].predecesor;
     }
     hideNotification();
+
+    return result;
 }

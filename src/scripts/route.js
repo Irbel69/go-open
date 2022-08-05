@@ -84,14 +84,17 @@ async function buildRoute(){
 
 
     showNotification("Applying algorithm...");
+    var route;
     await sleep(10);
     if (travelOptions.algorithm == "dijkstra")
-        dijkstra(startNode, endNode, travelOptions.process);
+        route = (await dijkstra(startNode, endNode, travelOptions.process)).reverse();
     
     else if (travelOptions.algorithm == "a-star")
-        aStar(startNode, endNode, travelOptions.process);
+        route =  (await aStar(startNode, endNode, travelOptions.process)).reverse();
+        displayPath(route);
     ;
 
-    document.querySelector("#new-route-button").style.display = "block";
+    
 
 }
+

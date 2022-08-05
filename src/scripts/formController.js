@@ -10,7 +10,6 @@ var travelOptions = {
 
 document.querySelectorAll(".select-location-button").forEach(element => {  
     element.addEventListener("click", function(e){
-        console.log(document.querySelectorAll(".select-location-button"));
         document.querySelector(".planning-route-panel").classList.toggle("active"); //slide
         map.on('click', async function(ev){
 
@@ -24,7 +23,6 @@ document.querySelectorAll(".select-location-button").forEach(element => {
 
             const marker = L.marker([lat,lon]).addTo(map); 
         
-            console.log(e.target);
             if (e.target.id == "start-location"){
                 locationInputComplete("start", travelOptions, lat, lon, marker);
             }
@@ -84,7 +82,6 @@ async function locationInputComplete(s, travelOptions, lat, lon, marker){
 
 async function getLatLonName(lat, lon){
     const req=`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
-    console.log(req);
     let result;
     await fetch(req)
     .then(response => response.json())
