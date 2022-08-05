@@ -1,10 +1,10 @@
 function showNotification(text){
     document.getElementById("notification-text").innerHTML = text;
-    document.getElementById("notification").style.display = "flex";
+    document.getElementById("notification").classList.add("active");
 }
 
 function hideNotification(){
-    document.getElementById("notification").style.display = "none";
+    document.getElementById("notification").classList.remove("active");
 }
 
 document.querySelector("#notification i").addEventListener("click", hideNotification);

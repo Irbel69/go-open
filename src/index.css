@@ -579,15 +579,20 @@ input:checked+.slider:before {
   height: 4rem;
   width: 20rem;
   position: absolute;
+  display: flex;
   bottom: 1rem;
-  right: 1rem;
+  right: -50rem;
   z-index: 999;
   border-radius: 1rem;
-  display: none;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  transition: 0.5s;
+}
+
+.notifcation-panel.active{
+  right: 1rem;
 }
 
 .notifcation-panel i {
