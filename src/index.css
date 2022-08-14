@@ -4,6 +4,10 @@
   --secondary-color: #cbdcf5;
 }
 
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
