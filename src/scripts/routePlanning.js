@@ -1,13 +1,8 @@
-document.querySelector("#new-route-button").addEventListener("click", function(){
-    document.querySelector(".other-buttons-panel").classList.toggle("disabled");
-    document.querySelector(".planning-route-panel").classList.toggle("active");
-});
-
-
-
-document.querySelector("#hide-route-panel").addEventListener("click", function(){
-    document.querySelector(".other-buttons-panel").classList.toggle("disabled");
-    document.querySelector(".planning-route-panel").classList.toggle("active");
+[document.querySelector("#new-route-button"), document.querySelector("#hide-route-panel")].forEach(element => {
+    element.addEventListener("click", function(){
+        document.querySelector(".other-buttons-panel").classList.toggle("disabled");
+        document.querySelector(".planning-route-panel").classList.toggle("active");
+    }); 
 });
 
 document.querySelectorAll(".route-btn").forEach(element => 

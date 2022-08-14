@@ -237,8 +237,7 @@ hr {
   font-size: 20px;
 }
 
-
-.planning-route-panel {
+.left-panel{
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   padding-top: 2rem;
@@ -250,9 +249,9 @@ hr {
   left:-480px;
   overflow: auto;
   transition: .4s;
-  /*Scroll*/
 }
-.planning-route-panel.active {
+
+.left-panel.active {
   left: 0px;
   /*Scroll*/
 }
