@@ -43,7 +43,7 @@ input.addEventListener('input', async (e) => {
       if (zoom > 18)
         zoom = 18;
 
-      if (travelOptions.start.length == 0){
+      if (travelOptions.end.length == 0){
         const marker = L.marker([results[i].y, results[i].x]).addTo(map);
         locationInputComplete("end", travelOptions, results[i].y, results[i].x, marker)
         travelOptions.end = [results[i].y, results[i].x, marker]
