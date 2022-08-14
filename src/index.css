@@ -216,6 +216,21 @@ hr {
   bottom: 5%;
   right: 3%;
   transition: .4s;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-location-button{
+  border-radius: 20rem  !important;
+  background-color: white!important;
+}
+
+.user-location-button i {
+  color: red;
+}
+
+.other-buttons-panel > * {
+  margin-bottom: 1rem;
 }
 
 .other-buttons-panel.disabled {
