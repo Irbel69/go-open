@@ -45,8 +45,8 @@ input.addEventListener('input', async (e) => {
 
       if (travelOptions.start.length == 0){
         const marker = L.marker([results[i].y, results[i].x]).addTo(map);
-        locationInputComplete("start", travelOptions, results[i].y, results[i].x, marker)
-        travelOptions.start = [results[i].y, results[i].x, marker]
+        locationInputComplete("end", travelOptions, results[i].y, results[i].x, marker)
+        travelOptions.end = [results[i].y, results[i].x, marker]
       }
       
       map.flyTo([results[i].y, results[i].x], zoom);

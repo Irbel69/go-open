@@ -82,6 +82,7 @@ async function locationInputComplete(s, travelOptions, lat, lon, marker){
 
 async function getLatLonName(lat, lon){
     const req=`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
+    console.log(req);
     let result;
     await fetch(req)
     .then(response => response.json())
@@ -91,5 +92,5 @@ async function getLatLonName(lat, lon){
     .catch(error => {
         console.log(error);
     });
-    return `${result.address.road}, ${result.address.house_number}`.replace(", undefined", "").replace("undefined", result.address.county);
+    return `${result.address.road}, ${result.address.house_number}`.replace(", undefined", "").replace("undefined", result.address.county).replace("undefined", result.address.state);
 }
