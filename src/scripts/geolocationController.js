@@ -1,4 +1,8 @@
-var userCords = {}  
+var userCords = {
+    lat: undefined,
+    lon: undefined,
+    marker: undefined
+}  
 if (navigator.geolocation) {
       navigator.geolocation.watchPosition(showPosition, positionError);
 } /*else {
@@ -8,13 +12,19 @@ if (navigator.geolocation) {
 function showPosition(position) {
     userCords.lat = position.coords.latitude;
     userCords.lon = position.coords.longitude;
+    console.log([userCords.lat, userCords.lon]);
     if (userCords.marker != undefined)
         map.removeLayer(userCords.marker);
     userCords.marker = L.marker([userCords.lat, userCords.lon], {icon: userPositionIcon}).addTo(map);
+    setUserGeolocationToStart(userCords.lat, userCords.lon);
 }
 
 function positionError(err){
     console.log(err);
+    if (userCords.marker != undefined)
+        map.removeLayer(userCords.marker);
+    userCords.lat = undefined;
+    userCords.lon = undefined;
 }
 
 document.getElementById("user-location-button").addEventListener("click", function() {
@@ -35,3 +45,7 @@ var userPositionIcon = L.icon({
 });
 
 
+function setUserGeolocationToStart(lat, lon){
+    if (travelOptions.start.length == 0)
+        locationInputComplete("start", travelOptions, lat, lon, false);
+}

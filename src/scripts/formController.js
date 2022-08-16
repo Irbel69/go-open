@@ -21,13 +21,12 @@ document.querySelectorAll(".select-location-button").forEach(element => {
             const lat = latlng.lat;
             const lon = latlng.lng 
 
-            const marker = L.marker([lat,lon]).addTo(map); 
         
             if (e.target.id == "start-location"){
-                locationInputComplete("start", travelOptions, lat, lon, marker);
+                locationInputComplete("start", travelOptions, lat, lon, true);
             }
             else {//end-location = id
-                locationInputComplete("end", travelOptions, lat, lon, marker);
+                locationInputComplete("end", travelOptions, lat, lon, true);
             }
    
         });
@@ -68,9 +67,12 @@ function cleanError(){
     document.getElementById("form-error-message").style.visibility = "hidden";
 }
 
-async function locationInputComplete(s, travelOptions, lat, lon, marker){
-    if (travelOptions[s].length > 0)
+async function locationInputComplete(s, travelOptions, lat, lon, booleanMarker){
+    
+    if (travelOptions[s][2] != undefined)
         map.removeLayer(travelOptions[s][2]);
+
+    const marker = booleanMarker? L.marker([lat,lon]).addTo(map) : undefined;
 
     travelOptions[s] = [lat, lon, marker];
 
