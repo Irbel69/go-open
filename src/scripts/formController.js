@@ -67,7 +67,7 @@ function cleanError(){
     document.getElementById("form-error-message").style.visibility = "hidden";
 }
 
-async function locationInputComplete(s, travelOptions, lat, lon, booleanMarker){
+async function locationInputComplete(s, travelOptions, lat, lon, booleanMarker, overrideName){
     
     if (travelOptions[s][2] != undefined)
         map.removeLayer(travelOptions[s][2]);
@@ -75,8 +75,11 @@ async function locationInputComplete(s, travelOptions, lat, lon, booleanMarker){
     const marker = booleanMarker? L.marker([lat,lon]).addTo(map) : undefined;
 
     travelOptions[s] = [lat, lon, marker];
-
-    document.querySelector(`#${s}-location p`).innerHTML = "✅​ ​" + await getLatLonName(lat, lon);
+    console.log(overrideName);
+    if (overrideName != undefined)
+        document.querySelector(`#${s}-location p`).innerHTML = overrideName
+    else
+        document.querySelector(`#${s}-location p`).innerHTML = "✅​ ​" + await getLatLonName(lat, lon);
     if (document.querySelector(`#${s}-location p`).innerHTML.length > 30)
         document.querySelector(`#${s}-location p`).classList.add("scroll");
 }

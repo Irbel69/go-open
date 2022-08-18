@@ -47,5 +47,5 @@ var userPositionIcon = L.icon({
 
 function setUserGeolocationToStart(lat, lon){
     if (travelOptions.start.length == 0)
-        locationInputComplete("start", travelOptions, lat, lon, false);
+        locationInputComplete("start", travelOptions, lat, lon, false, "📍 Your location");
 }
