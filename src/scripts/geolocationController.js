@@ -3,6 +3,7 @@ var userCords = {
     lon: undefined,
     marker: undefined
 }  
+
 if (navigator.geolocation) {
       navigator.geolocation.watchPosition(showPosition, positionError);
 } /*else {
@@ -19,12 +20,14 @@ function showPosition(position) {
     setUserGeolocationToStart(userCords.lat, userCords.lon);
 }
 
-function positionError(err){
+async function positionError(err){
     console.log(err);
     if (userCords.marker != undefined)
         map.removeLayer(userCords.marker);
     userCords.lat = undefined;
     userCords.lon = undefined;
+    await sleep(5000);
+    navigator.geolocation.watchPosition(showPosition, positionError);
 }
 
 document.getElementById("user-location-button").addEventListener("click", function() {
