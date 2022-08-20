@@ -47,7 +47,7 @@ async function buildRoute(){
             };
             for(let i=0; i<element.nodes.length; i++){
                 try{
-                    if (element.nodes[i-1] != undefined && ((element.tags.oneway != "yes") || travelOptions.vehicle != "car"))
+                    if (element.nodes[i-1] != undefined && ((element.tags.oneway != "yes") || (travelOptions.vehicle != "car" && travelOptions.vehicle != "bike")))
                         mapNodes[element.nodes[i]].colidantNodes.push(element.nodes[i-1]);
                 } finally {}
                 try{

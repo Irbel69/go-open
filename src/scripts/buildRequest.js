@@ -18,7 +18,9 @@ function buildOverpassQuery(vehicleId){
   if (vehicleId=="car")
     return `["highway"]`;
   else if (vehicleId == "walking")
-    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]["highway"!="primary"]`;
+    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]`;
+  else if (vehicleId == "bike")
+    return `["highway"]["highway"!="motorway"]["highway"!="trunk"]`;
 }
 
 function getBounds(startNode, endNode){
