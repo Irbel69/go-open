@@ -43,11 +43,6 @@ document.getElementById("calculate-route-button").addEventListener("click", asyn
             const n = 1;
             n.replace(2,""); //You can't replace a int (force to catch)
         }
-        if (distance(travelOptions.start[0], travelOptions.end[0], travelOptions.start[1], travelOptions.end[1]) < 0.1){
-            alert("No point calculating this...");
-            const n = 1;
-            n.replace(2,""); //You can't replace a int (force to catch)    
-        }
         cleanError();
         await sleep(200);
         document.querySelector(".planning-route-panel").classList.toggle("active");
