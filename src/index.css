@@ -284,6 +284,7 @@ hr {
 .route-buttons {
   display: flex;
   flex-direction: row;
+  transition: ease 0.5s;
 }
 
 .vehicle-panel {
