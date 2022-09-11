@@ -38,7 +38,7 @@ async function aStar(startingNode, endingNode, process){
                 nodeTree[element] = {};
                 nodeTree[element].realCost = nodeTree[actualNode].realCost + distance(mapNodes[actualNode].lat, mapNodes[element].lat, mapNodes[actualNode].lon, mapNodes[element].lon);
                 nodeTree[element].predecesor = actualNode;
-                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon)*2;
+                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon)/**2*/;
                 nodeTree[element].visited = false;
 
                 nextNodeSelector.push([String(element), nodeTree[element].cost]);
