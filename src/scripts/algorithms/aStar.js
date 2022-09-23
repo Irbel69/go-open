@@ -16,7 +16,12 @@ async function aStar(startingNode, endingNode, process){
     L.circle([mapNodes[actualNode].lat, mapNodes[actualNode].lon], 20, {color: "blue", opacity:.5}).addTo(map);
     L.circle([mapNodes[endingNode].lat, mapNodes[endingNode].lon], 20, {color: "blue", opacity:.5}).addTo(map);
 
-    
+    var heuristicMultiplier = parseInt(document.getElementById("heuristicMultiplier-input").value);
+    console.log(heuristicMultiplier);
+    if (isNaN(heuristicMultiplier))
+        heuristicMultiplier = 2;
+    console.log(heuristicMultiplier)
+
     while (actualNode != endingNode){
 
         var nextNodeSelector = [];
@@ -38,7 +43,7 @@ async function aStar(startingNode, endingNode, process){
                 nodeTree[element] = {};
                 nodeTree[element].realCost = nodeTree[actualNode].realCost + distance(mapNodes[actualNode].lat, mapNodes[element].lat, mapNodes[actualNode].lon, mapNodes[element].lon);
                 nodeTree[element].predecesor = actualNode;
-                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon)/**2*/;
+                nodeTree[element].cost = nodeTree[element].realCost + distance(mapNodes[element].lat, mapNodes[endingNode].lat, mapNodes[element].lon, mapNodes[endingNode].lon)*heuristicMultiplier;
                 nodeTree[element].visited = false;
 
                 nextNodeSelector.push([String(element), nodeTree[element].cost]);
