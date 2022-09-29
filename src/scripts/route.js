@@ -60,6 +60,7 @@ async function buildRoute(){
     delete obj; 
 
     //getting closest nodes
+    showNotification("Searching for the closest nodes...");
 
     var startClosestDistance = distance(travelOptions.start[0], mapNodes[Object.keys(mapNodes)[0]].lat, travelOptions.start[1], mapNodes[Object.keys(mapNodes)[0]].lon);
     var startNode = Object.keys(mapNodes)[0];
