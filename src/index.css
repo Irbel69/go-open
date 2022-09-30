@@ -257,8 +257,6 @@ hr {
 }
 
 .left-panel{
-  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   padding-top: 2rem;
   position: absolute;
   background-color: #ffffff;
@@ -271,6 +269,8 @@ hr {
 }
 
 .left-panel.active {
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.42);
   left: 0px;
   /*Scroll*/
 }
