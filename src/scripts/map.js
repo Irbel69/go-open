@@ -9,4 +9,4 @@ L.tileLayer(tilesProvider, {
 }).addTo(map);
 
 
-document.querySelector("div.leaflet-control-attribution a").innerHTML="<a href='index.html'>Marcel Gruñeiro</a>";
+document.querySelector("div.leaflet-control-attribution a").innerHTML="<a target='_blank' href='https://github.com/Irbel69/go-open'>Marcel Gruñeiro</a>";
