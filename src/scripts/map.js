@@ -12,7 +12,7 @@ const tilesProviders = {
 let map = L.map("map").setView([41.61674, 0.62218], 13);
 
 
-var tile = L.tileLayer(tilesProviders.googleStreets[0], {
+var tile = L.tileLayer(tilesProviders.osm[0], {
     maxZoom: 18,
     subdomains:['mt0','mt1','mt2','mt3']
     //detectRetina: true blurry map on mobile devices
