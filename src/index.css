@@ -712,3 +712,12 @@ box-shadow: 10px 10px 15px -6px rgba(0,0,0,0.75);
   margin-top: 0.5rem;
   margin-left: 3rem;
 }
+
+@media (max-width: 480px) {
+  .config-panel h1 {
+    font-size: 24px;
+  }
+  .config-panel{
+    width: 100%;
+  }
+}
