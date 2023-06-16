@@ -92,7 +92,7 @@ async function buildRoute(){
     
     else if (travelOptions.algorithm == "a-star")
         route =  (await aStar(startNode, endNode, travelOptions.process)).reverse();
-        displayPath(route);
+        //displayPath(route);
     ;
 
     
