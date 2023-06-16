@@ -2,7 +2,9 @@ var userCords = {
     lat: undefined,
     lon: undefined,
     marker: undefined
-}  
+}
+
+var positioned = false; //variable that controls if the user has been set to the correct initial position on load the app.
 
 if (navigator.geolocation) {
       navigator.geolocation.watchPosition(showPosition, positionError);
@@ -13,7 +15,11 @@ if (navigator.geolocation) {
 function showPosition(position) {
     userCords.lat = position.coords.latitude;
     userCords.lon = position.coords.longitude;
-    console.log([userCords.lat, userCords.lon]);
+    if (!positioned){
+        positioned = true;
+        map.setView([userCords.lat, userCords.lon], 13); //at this point the map script will have already been loaded
+    }
+
     if (userCords.marker != undefined)
         map.removeLayer(userCords.marker);
     userCords.marker = L.marker([userCords.lat, userCords.lon], {icon: userPositionIcon}).addTo(map);

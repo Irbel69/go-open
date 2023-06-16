@@ -9,7 +9,7 @@ const tilesProviders = {
     darkMode: ["https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", "Dark Mode"]
 };
 
-let map = L.map("map").setView([41.61674, 0.62218], 13);
+let map = L.map("map").setView([51.507351, -0.127758], 15);
 
 
 var tile = L.tileLayer(tilesProviders.osm[0], {
